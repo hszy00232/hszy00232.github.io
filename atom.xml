@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-09-30T10:35:40.000Z</updated>
+  <updated>2015-09-30T10:46:32.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -18,12 +18,15 @@
     <title><![CDATA[Hexo升级后遇到的几个问题]]></title>
     <link href="http://yoursite.com/2015/09/30/tool-git-deploy/"/>
     <id>http://yoursite.com/2015/09/30/tool-git-deploy/</id>
-    <published>2015-09-30T10:35:40.000Z</published>
-    <updated>2015-09-30T10:35:40.000Z</updated>
+    <published>2015-09-30T10:46:32.000Z</published>
+    <updated>2015-09-30T10:46:32.000Z</updated>
     <content type="html"><![CDATA[<p>HEXO升级到3+以后，不可避免的带来了一些坑。</p>
 <h2 id="hexo_Deployer_not_found:_github_是什么情况">hexo Deployer not found: github 是什么情况</h2><p>执行<code>hexo deploy</code>时，提示<code>ERROR Deployer not found: github</code></p>
 <p>解决方案：<br>在version 3中的配置文件__config.yml，需要将type: github修改为type: git<br>然后执行命令：<code>npm install hexo-deployer-git --save</code></p>
 <p>如此就可正常使用。<a id="more"></a></p>
+<h2 id="无法生成feed-xml和sitemap-xml">无法生成feed.xml和sitemap.xml</h2><p>解决方案：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-feed --save</span><br><span class="line">npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure></p>
+<p>然后在__config.yml配置文件中追加信息：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># Extensions</span><br><span class="line">Plugins:</span><br><span class="line">- hexo-generator-sitemap</span><br><span class="line">- hexo-generator-feed</span><br><span class="line"></span><br><span class="line">#sitemap</span><br><span class="line">sitemap:</span><br><span class="line">  path: /sitemap.xml</span><br><span class="line">#Feed Atom</span><br><span class="line">feed:</span><br><span class="line">  type: atom</span><br><span class="line">  path: /atom.xml</span><br><span class="line">  limit: 20</span><br></pre></td></tr></table></figure>
 <h2 id="hexo_deploy时提示Erro">hexo deploy时提示Erro</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Error</span>: error: RPC failed; result=<span class="number">56</span>, HTTP code = <span class="number">200</span></span><br><span class="line">fatal: The remote end hung up unexpectedly</span><br></pre></td></tr></table></figure>
 <p>在网上搜了一下大概是网络的问题，设置了一个git代理来解决</p>
 <p>git代理的设置：</p>
